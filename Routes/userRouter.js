@@ -1,13 +1,8 @@
 const router = require('express').Router()
+const userController = require('../controllers/userController')
 
-router.post('/register', (req,res) =>{
-  
-  res.send('OK')
-})
-
-router.post('/login', (req, res) => {
-  res.send('Siap')
-})
+router.post('/register', userController.registerUser)
+router.post('/login', userController.loginUser)
 
 
 
