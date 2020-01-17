@@ -1,11 +1,12 @@
 'use strict'
 require('dotenv').config()
 
-const Storage = require('@google-cloud/storage')
+const {Storage} = require('@google-cloud/storage')
+
 
 const CLOUD_BUCKET = process.env.CLOUD_BUCKET
 
-const storage = Storage({
+const storage = new Storage({
   projectId: process.env.GCLOUD_PROJECT,
   keyFilename: process.env.KEYFILE_PATH
 })
