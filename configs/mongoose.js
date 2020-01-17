@@ -1,6 +1,6 @@
 module.exports = function () {
 	const mongoose = require('mongoose');
-	mongoose.connect(process.env.MONGOURI, {
+	mongoose.connect(process.env.ATLAS_CONNECT, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 		useCreateIndex: true
