@@ -1,11 +1,11 @@
 'use strict'
 require('dotenv').config()
 
-const Storage = require('@google-cloud/storage')
+const { Storage } = require('@google-cloud/storage')
 
 const CLOUD_BUCKET = process.env.CLOUD_BUCKET
 
-const storage = Storage({
+const storage = new Storage({
   projectId: process.env.GCLOUD_PROJECT,
   keyFilename: process.env.KEYFILE_PATH
 })
@@ -46,13 +46,13 @@ const sendUploadToGCS = (req, res, next) => {
 }
 
 const Multer = require('multer'),
-      multer = Multer({
-        storage: Multer.MemoryStorage,
-        limits: {
-          fileSize: 5 * 1024 * 1024
-        }
-        // dest: '../images'
-      })
+  multer = Multer({
+    storage: Multer.MemoryStorage,
+    limits: {
+      fileSize: 5 * 1024 * 1024
+    }
+    // dest: '../images'
+  })
 
 module.exports = {
   getPublicUrl,
