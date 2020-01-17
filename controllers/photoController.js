@@ -1,17 +1,16 @@
 const Photo = require('../models/Photo')
 
-class PhotoController{
+class PhotoController {
 
   static uploadPhoto(req, res){
-    // console.log('udah masuk controller coy');
     let data = {
       url : req.urlImage,
       tags : req.body.tags.split(',')
     }
+
     Photo
       .create(data)
       .then(photo => {
-        // console.log(photo);
         res.send({
           status: 201,
           message: 'Your file is successfully uploaded',
@@ -32,7 +31,19 @@ class PhotoController{
       .catch(err => {
         res.status(500).json(err)
       })
-  }
+    }
+
+  static search(req, res, next) {
+    Photo.find({
+      tags: this.tags.includes(req.params.id)
+    })
+      .then(result => {
+        res.status(200).json(result)
+      })
+      .catch(err => {
+        res.status(500).json(err)
+      })
+    }
 }
 
 module.exports = PhotoController
