@@ -35,7 +35,7 @@ class PhotoController {
 
   static search(req, res, next) {
     Photo.find({
-      tags: this.tags.includes(req.params.id)
+      tags: req.params.keyword
     })
       .then(result => {
         res.status(200).json(result)
